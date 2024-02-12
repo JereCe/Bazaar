@@ -1,21 +1,21 @@
 package com.lexosis.bazaar.service;
 
+
 import com.lexosis.bazaar.model.Product;
-
-
 import com.lexosis.bazaar.repository.IProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
 import org.springframework.web.client.HttpClientErrorException;
 
 import java.util.List;
 
-public class ProductService  implements IProductService{
+@Service
+public class ProductService implements IProductService{
 
     @Autowired
     private IProductRepository productRepository;
-
 
     @Override
     public ResponseEntity<List<Product>> getAllProduct() {
@@ -70,4 +70,6 @@ public class ProductService  implements IProductService{
 
         }
     }
+
+
 }

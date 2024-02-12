@@ -1,6 +1,7 @@
 package com.lexosis.bazaar.controller;
 
 import com.lexosis.bazaar.model.Product;
+import com.lexosis.bazaar.service.IClientService;
 import com.lexosis.bazaar.service.IProductService;
 import com.lexosis.bazaar.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +15,8 @@ public class ProductController {
 
     @Autowired
     private IProductService productService;
+
+
 
     @GetMapping("/products")
     public ResponseEntity<List<Product>> getAllProduct(){
