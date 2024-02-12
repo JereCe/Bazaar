@@ -23,12 +23,12 @@ public class SaleController {
         return saleService.saveSale(sale);
     }
 
-    @GetMapping("/sales/{id}")
+    @GetMapping("/sales/{saleCode}")
     public ResponseEntity<Sale> findSale(@PathVariable Long saleCode){
         return saleService.findSale(saleCode);
     }
 
-    @DeleteMapping("/sales/delete/{codigoVenta}")
+    @DeleteMapping("/sales/delete/{saleCode}")
     public ResponseEntity deleteSale(@PathVariable Long saleCode){
         return saleService.deleteSale(saleCode);
     }

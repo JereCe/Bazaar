@@ -17,8 +17,7 @@ public class Sale {
     private long saleCode;
     private LocalDate dateOfSale;
     private double total;
-    @OneToMany
-    @JoinColumn(name = "productList")
+    @ManyToMany
     private List<Product> productList;
     @ManyToOne
     @JoinColumn(name = "client_id")

@@ -28,8 +28,8 @@ public class ProductController {
         return productService.saveProduct(product);
     }
 
-    @DeleteMapping("/products/delete{productCode}")
-    public ResponseEntity deleteProduct(Long productCode){
+    @DeleteMapping("/products/delete/{productCode}")
+    public ResponseEntity deleteProduct(@PathVariable  Long productCode){
         return productService.deleteProduct(productCode);
     }
     @GetMapping("/products/{productCode}")

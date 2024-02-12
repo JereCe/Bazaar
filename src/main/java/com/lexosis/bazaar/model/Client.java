@@ -1,5 +1,6 @@
 package com.lexosis.bazaar.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -16,13 +17,11 @@ public class Client {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long clientId;
-
     private String name;
-
     private String lastName;
-
     private String dni;
     @OneToMany(mappedBy = "client")
+    @JsonIgnore
     private List<Sale> listSale;
 
 

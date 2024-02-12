@@ -71,5 +71,16 @@ public class ProductService implements IProductService{
         }
     }
 
+    @Override
+    public ResponseEntity decreaseStockProduct(Product product,Double quantity) {
+        try {
+            product.setInventory(product.getInventory()-quantity);
+            this.saveProduct(product);
+            return ResponseEntity.status(HttpStatus.OK).build();
+        }catch (Exception e){
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
+    }
+
 
 }

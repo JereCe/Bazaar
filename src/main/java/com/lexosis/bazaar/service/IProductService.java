@@ -18,4 +18,8 @@ public interface IProductService {
 
 
     public ResponseEntity<Product> findProduct(Long id);
+
+    public ResponseEntity decreaseStockProduct(Product product, Double quantity);
+
+
 }
