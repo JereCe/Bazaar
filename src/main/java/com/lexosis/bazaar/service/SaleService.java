@@ -36,9 +36,9 @@ public class SaleService implements  ISaleService{
     }
 
     @Override
-    public ResponseEntity deleteSale(Long id) {
+    public ResponseEntity deleteSale(Long saleCode) {
         try {
-            saleRepository.deleteById(id);
+            saleRepository.deleteById(saleCode);
             return ResponseEntity.status(HttpStatus.OK).build();
         }catch (Exception e){
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
@@ -56,9 +56,9 @@ public class SaleService implements  ISaleService{
     }
 
     @Override
-    public ResponseEntity <Sale> findSale(Long id) {
+    public ResponseEntity <Sale> findSale(Long saleCode) {
         try {
-            Sale sale = saleRepository.findById(id).orElseThrow(()->new HttpClientErrorException(HttpStatus.BAD_REQUEST,"sale not found"));
+            Sale sale = saleRepository.findById(saleCode).orElseThrow(()->new HttpClientErrorException(HttpStatus.BAD_REQUEST,"sale not found"));
             return ResponseEntity.ok(sale);
         }catch (Exception e){
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();

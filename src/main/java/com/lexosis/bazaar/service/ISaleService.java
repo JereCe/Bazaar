@@ -12,11 +12,11 @@ public interface ISaleService {
 
     public ResponseEntity saveSale(Sale sale);
 
-    public ResponseEntity deleteSale(Long id);
+    public ResponseEntity deleteSale(Long saleCode);
 
 
     public ResponseEntity editSale(Sale sale);
 
 
-    public ResponseEntity <Sale> findSale(Long id);
+    public ResponseEntity <Sale> findSale(Long saleCode);
 }
