@@ -19,5 +19,5 @@ public interface IProductService {
     public ResponseEntity editProduct(Product product);
 
 
-    public ResponseEntity findProduct(Long id);
+    public ResponseEntity<Product> findProduct(Long id);
 }

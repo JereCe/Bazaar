@@ -1,6 +1,7 @@
 package com.lexosis.bazaar.service;
 
 import com.lexosis.bazaar.model.Client;
+import com.lexosis.bazaar.model.Product;
 import org.springframework.http.ResponseEntity;
 
 import java.util.List;
@@ -17,6 +18,6 @@ public interface IClientService {
     public ResponseEntity editClient(Client client);
 
 
-    public ResponseEntity findClient(Long id);
+    public ResponseEntity<Client> findClient(Long id);
 
 }
