@@ -1,5 +1,6 @@
 package com.lexosis.bazaar.service;
 
+import com.lexosis.bazaar.dto.SalesOfDayDTO;
 import com.lexosis.bazaar.model.Product;
 import com.lexosis.bazaar.model.Sale;
 import com.lexosis.bazaar.repository.ISaleRepository;
@@ -9,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.HttpClientErrorException;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Service
@@ -80,4 +82,31 @@ public class SaleService implements  ISaleService{
 
         }
     }
+
+    @Override
+    public ResponseEntity<List<Product>> getProductsInSale(Long code) {
+        try {
+            List<Product> productList = saleRepository.getProductsInSale(code);
+            return ResponseEntity.ok(productList);
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
+    }
+
+    @Override
+    public ResponseEntity<SalesOfDayDTO> getDailySalesReport(LocalDate date) {
+        try {
+            List<Sale> sale = saleRepository.getDailySalesReport(date);
+            SalesOfDayDTO saleDay = new SalesOfDayDTO();
+            for(Sale s :sale){
+                saleDay.setTotalSales(saleDay.getTotalSales()+s.getTotal());
+                saleDay.setTotalSalesCount(saleDay.getTotalSalesCount()+1);
+            }
+            return ResponseEntity.ok(saleDay);
+        }catch (Exception e){
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
+    }
+
+
 }

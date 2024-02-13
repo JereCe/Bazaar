@@ -21,5 +21,7 @@ public interface IProductService {
 
     public ResponseEntity decreaseStockProduct(Product product, Double quantity);
 
+    public ResponseEntity<List<Product>> isStockLow();
+
 
 }

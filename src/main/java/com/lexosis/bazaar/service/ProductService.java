@@ -82,5 +82,16 @@ public class ProductService implements IProductService{
         }
     }
 
+    @Override
+    public ResponseEntity<List<Product>> isStockLow() {
+        try {
+            List<Product> productList = productRepository.isStockLow();
+            return ResponseEntity.ok(productList);
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
+
+    }
+
 
 }
