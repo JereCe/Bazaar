@@ -19,4 +19,10 @@ public interface ISaleRepository extends JpaRepository<Sale,Long> {
     List<Sale> getDailySalesReport(LocalDate date);
 
 
+    @Query("SELECT s FROM Sale s   WHERE s.total =(SELECT MAX(total)from Sale )")
+    Sale getSaleWithHighestTotal();
+
+
+
+
 }

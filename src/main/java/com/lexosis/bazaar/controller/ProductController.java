@@ -42,6 +42,11 @@ public class ProductController {
         return productService.editProduct(product);
     }
 
+    @GetMapping("/products/low_stock")
+    public ResponseEntity<List<Product>> isStockLow(){
+        return productService.isStockLow();
+    }
+
 
 
 

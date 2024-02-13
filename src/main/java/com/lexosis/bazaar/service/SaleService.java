@@ -1,5 +1,6 @@
 package com.lexosis.bazaar.service;
 
+import com.lexosis.bazaar.dto.ClientSaleProductDTO;
 import com.lexosis.bazaar.dto.SalesOfDayDTO;
 import com.lexosis.bazaar.model.Product;
 import com.lexosis.bazaar.model.Sale;
@@ -104,6 +105,22 @@ public class SaleService implements  ISaleService{
             }
             return ResponseEntity.ok(saleDay);
         }catch (Exception e){
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
+    }
+
+    @Override
+    public ResponseEntity<ClientSaleProductDTO> getSaleWithHighestTotal() {
+        try {
+            Sale sale = saleRepository.getSaleWithHighestTotal();
+            ClientSaleProductDTO saleMax = new ClientSaleProductDTO();
+            saleMax.setSaleCode(sale.getSaleCode());
+            saleMax.setTotal(sale.getTotal());
+            saleMax.setClientName(sale.getClient().getName());
+            saleMax.setClientLastName(sale.getClient().getLastName());
+            saleMax.setQuantityProduct(sale.getProductList().size());
+            return ResponseEntity.ok(saleMax);
+        } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
     }

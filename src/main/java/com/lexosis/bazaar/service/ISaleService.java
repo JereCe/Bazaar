@@ -1,6 +1,7 @@
 package com.lexosis.bazaar.service;
 
 
+import com.lexosis.bazaar.dto.ClientSaleProductDTO;
 import com.lexosis.bazaar.dto.SalesOfDayDTO;
 import com.lexosis.bazaar.model.Product;
 import com.lexosis.bazaar.model.Sale;
@@ -26,4 +27,6 @@ public interface ISaleService {
     public ResponseEntity<List<Product>>getProductsInSale(Long code);
 
     public ResponseEntity<SalesOfDayDTO> getDailySalesReport(LocalDate date);
+
+    public ResponseEntity<ClientSaleProductDTO> getSaleWithHighestTotal();
 }
